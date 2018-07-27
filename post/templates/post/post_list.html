@@ -1,0 +1,9 @@
+<h1>Post List</h1>
+{% for post in object_list %}
+<h3>{{ post.title }}</h3> <br>
+Autor: {{post.author.username}}<br>
+Publicado: {{post.publish}}<br>
+<a href="{% url 'post-detail' posts.get_absolute_url %}">Ver</a>
+
+<hr>
+{% endfor %}
