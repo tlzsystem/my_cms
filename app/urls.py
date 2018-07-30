@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from post.views import PostList, PostDetail
+from home.views import HomeView
 
 urlpatterns = [
+    path('', HomeView.as_view(), name="home-page"),
     path('admin/', admin.site.urls),
     path('posts/', PostList.as_view(), name='post-list'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),

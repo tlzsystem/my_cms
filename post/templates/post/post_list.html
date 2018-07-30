@@ -1,9 +1,55 @@
-<h1>Post List</h1>
-{% for post in object_list %}
-<h3>{{ post.title }}</h3> <br>
-Autor: {{post.author.username}}<br>
-Publicado: {{post.publish}}<br>
-<a href="{% url 'post-detail' posts.get_absolute_url %}">Ver</a>
+{% extends "base.html" %}
 
-<hr>
-{% endfor %}
+{% block content %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background:black">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Posts</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          {% for post in object_list %}
+            <div class="post-preview">
+                <a href="{{ post.get_absolute_url }}">
+                  <h2 class="post-title">
+                    {{ post.title }}
+                  </h2>
+                  <h3 class="post-subtitle">
+                    {{ post.subtitle }}
+                  </h3>
+                </a>
+                <p class="post-meta">Escrito por
+                  <a href="#">{{post.author.username}} </a>
+                  el {{post.publish}}</p>
+          </div>
+          <hr>
+          {% endfor %}
+
+          <!-- Pager -->
+          <div class="clearfix">
+                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+          </div>
+          <div class="clearfix">
+              {% if page_obj.has_previous %}
+              <a class="btn btn-primary float-left" href="?page={{ page_obj.previous_page_number }}">&larr; Anterior </a>
+              {% endif %}
+              {% if page_obj.has_next %}
+              <a class="btn btn-primary float-right" href="?page={{ page_obj.next_page_number  }}">Siguente &rarr;</a>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+{%endblock%}

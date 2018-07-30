@@ -1,3 +1,33 @@
-<h1>{{ object.title}}</h1>
-<p>{{ object.body|linebreaks  }}</p>
+{% extends "base.html" %}
 
+{% block content %}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background:black">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>{{ object.title}}</h1>
+              <span class="subheading">{{ object.subtitle}}</span>
+                <p class="post-meta">Escrito por
+                  <a href="#">{{object.author.username}} </a>
+                  el {{object.publish}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p>{{ object.body|linebreaks  }}</p>
+
+
+        </div>
+      </div>
+    </div>
+{%endblock%}
