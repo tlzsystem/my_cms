@@ -22,6 +22,10 @@
     <!-- Custom styles for this template -->
     <link href="{% static "dist/css/clean-blog.min.css" %}" rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="{%  static "dist/img/favicon-32x32.png" %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{%  static "dist/img/favicon-16x16.png" %}" sizes="16x16">
+
+
   </head>
 
   <body>
@@ -43,10 +47,10 @@
               <a class="nav-link" href="{% url 'post-list' %}">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="post.html">Acerca de</a>
+              <a class="nav-link" href="{% url 'about-page' %}">Acerca de</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contacto</a>
+              <a class="nav-link" href="{% url 'contact-page' %}">Contacto</a>
             </li>
           </ul>
         </div>
@@ -67,7 +71,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://www.twitter.com/{{ siteinfo.twitter }}">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -75,23 +79,31 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://www.linkedin.com/in/{{ siteinfo.twitter }}">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://www.github.com/{{ siteinfo.github }}">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
               </li>
+              <li class="list-inline-item">
+                <a href="mailto:{{ siteinfo.mail }}">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; {{ siteinfo.author }} 2018</p>
+            <p class="copyright text-muted">Copyright &copy; {{ siteinfo.author }} . {% now "Y" %}</p>
           </div>
         </div>
       </div>

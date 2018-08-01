@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'home',
     'sitesetting',
     'tag',
+    'about',
+    'contact',
 ]
 
 MIDDLEWARE = [

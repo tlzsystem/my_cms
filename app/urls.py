@@ -17,10 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from post.views import PostList, PostDetail
 from home.views import HomeView
+from about.views import AboutView
+from contact.views import ContactAdd
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home-page"),
+    path('about/', AboutView.as_view(), name="about-page"),
     path('admin/', admin.site.urls),
+    path('contact/', ContactAdd.as_view(), name="contact-page"),
     path('posts/', PostList.as_view(), name='post-list'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),
 ]

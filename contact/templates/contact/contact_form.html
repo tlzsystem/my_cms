@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Page Header -->
+    <header class="postheader">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Contacto</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p>Ingresa tus datos en este formulario y me contactaré contigo.</p>
+            <form role="form" id="contactForm" method="POST">{% csrf_token %}
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="{{ form.name.id_for_label }}">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" required data-validation-required-message="Ingrese su nombre.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="{{ form.email.id_for_label }}">Email</label>
+                        <input type="email" class="form-control" placeholder="Email" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" required data-validation-required-message="Ingrese su email.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label for="{{ form.phone.id_for_label }}">Fono</label>
+                        <input type="tel" class="form-control" placeholder="Fono" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" required data-validation-required-message="Ingrese su número de teléfono.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="{{ form.message.id_for_label }}">Mensaje</label>
+                        <textarea rows="5" class="form-control" placeholder="Mensaje" id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" required data-validation-required-message="Ingrese un mensaje."></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Enviar</button>
+                </div>
+            </form>
+
+
+        </div>
+      </div>
+    </div>
+{% endblock %}
