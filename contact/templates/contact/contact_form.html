@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-
+{% block customheader %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
 {% block content %}
     <!-- Page Header -->
     <header class="postheader">
@@ -18,6 +20,16 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <p>Ingresa tus datos en este formulario y me contactaré contigo.</p>
+            <div id="success">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+            </div>
             <form role="form" id="contactForm" method="POST">{% csrf_token %}
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
@@ -49,7 +61,8 @@
                     </div>
                 </div>
                 <br>
-                <div id="success"></div>
+                <div class="g-recaptcha" data-sitekey="6LcICWgUAAAAAPzW_sQkvr4W7lGCzujtaiRHJF5b"></div>
+                <br>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" id="sendMessageButton">Enviar</button>
                 </div>
