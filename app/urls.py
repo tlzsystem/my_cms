@@ -19,7 +19,6 @@ from post.views import PostList, PostDetail
 from home.views import HomeView
 from about.views import AboutView
 from contact.views import ContactAdd
-from sitesetting.views import SettingSite
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home-page"),
