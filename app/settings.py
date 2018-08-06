@@ -128,3 +128,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join('static'), )
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+# GOOGLE CAPTCHA CODE
+GOOGLE_SECRET_KEY = "TU_KEY"

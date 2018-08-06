@@ -23,9 +23,14 @@
             <div id="success">
                     {% if messages %}
                         {% for message in messages %}
-                            <div class="alert alert-success" role="alert">
-                                {{ message }}
-                            </div>
+                            {% if message.tags == 'error' %}
+                                <div class="alert alert-danger" role="alert">
+                            {% endif%}
+                            {% if message.tags == 'success' %}
+                                <div class="alert alert-success" role="alert">
+                            {% endif%}
+                                    {{ message }}
+                                </div>
                         {% endfor %}
 
                     {% endif %}
