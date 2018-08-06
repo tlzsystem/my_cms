@@ -23,6 +23,8 @@ Install requirements
     pip install -r requirements.txt
   
 Migrate
+    
+    python manage.py makemigrations
 
     python manage.py migrate
     
@@ -51,6 +53,8 @@ Run
     pip install -r requirements.txt
     
  Migra
+ 
+    python manage.py makemigrations
  
     python manage.py migrate
     

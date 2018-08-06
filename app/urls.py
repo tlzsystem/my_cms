@@ -28,5 +28,4 @@ urlpatterns = [
     path('contact/', ContactAdd.as_view(), name="contact-page"),
     path('posts/', PostList.as_view(), name='post-list'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),
-    path('config/', SettingSite.as_view(), name="site-config")
 ]
