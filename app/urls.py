@@ -19,6 +19,7 @@ from post.views import PostList, PostDetail
 from home.views import HomeView
 from about.views import AboutView
 from contact.views import ContactAdd
+from sitesetting.views import SettingSite
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home-page"),
@@ -27,4 +28,5 @@ urlpatterns = [
     path('contact/', ContactAdd.as_view(), name="contact-page"),
     path('posts/', PostList.as_view(), name='post-list'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),
+    path('config/', SettingSite.as_view(), name="site-config")
 ]

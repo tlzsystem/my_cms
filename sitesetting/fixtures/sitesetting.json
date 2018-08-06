@@ -1,0 +1,1 @@
+[{"model": "sitesetting.sitesetting", "pk": "app", "fields": {"name": "demo", "description": "demo", "keywords": "demo", "author": "demo", "title": "demo", "twitter": "demo", "github": "demo", "linkedin": "demo", "mail": "demo"}}]
