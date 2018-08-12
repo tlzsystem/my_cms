@@ -7,6 +7,8 @@ Funciona con **Python 3**
 
 Requiere una cuenta de Google Captcha
 
+Requiere una cuenta en Disqus para los comentarios
+
 Se usó la plantilla Clean Blog del sitio startbootstrap
 https://startbootstrap.com/template-overviews/clean-blog/
 
