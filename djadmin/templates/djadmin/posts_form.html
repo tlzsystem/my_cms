@@ -1,0 +1,56 @@
+{% extends "base_admin.html" %}
+{% load static %}
+{% block customheader %}
+    <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'dj-admin-posts-view' %}">Entradas</a>
+            </li>
+            <li class="breadcrumb-item">Listado</li>
+            <li class="breadcrumb-item active">Crear</li>
+          </ol>
+
+          <!-- Page Content -->
+          <h1>Nueva Entrada</h1>
+          <hr>
+
+          <form role="form" method="POST">{% csrf_token %}
+              <div class="form-group">
+                <label for="{{ form.title.id_for_label }}">Titulo</label>
+                <input type="text" class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}"
+                    placeholder="Titulo" value="{{ form.title.value|default_if_none:'' }}" maxlength="100" required>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.subtitle.id_for_label }}">Subtitulo</label>
+                <input type="text" class="form-control" id="{{ form.subtitle.id_for_label }}" name="{{ form.subtitle.html_name }}"
+                    placeholder="Subtitulo" value="{{ form.subtitle.value|default_if_none:'' }}" maxlength="100" required>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.body.id_for_label }}">Cuerpo</label>
+                <textarea class="form-control" id="{{ form.body.id_for_label }}" name="{{ form.body.html_name }}"
+                          value="{{ form.body.value|default_if_none:'' }}" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="{{ form.status.id_for_label }}">Estado</label>
+                <select class="form-control" required id="{{ form.status.id_for_label }}" name="{{ form.status.html_name }}">
+                    {% for stat in form.status %}
+                        {{ stat }}
+                    {% endfor %}
+                </select>
+              </div>
+                <button type="submit" class="btn btn-default">Guardar</button>
+              <script>
+			        CKEDITOR.replace( '{{ form.body.html_name }}' );
+		      </script>
+
+          </form>
+
+</div>
+
+{% endblock%}

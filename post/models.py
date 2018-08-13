@@ -6,8 +6,8 @@ from django.urls import reverse
 
 class Post(models.Model):
     STATUS_CHOICES =(
-        ('PUBLISHED','PUBLISHED'),
-        ('DRAFT','DRAFT'),
+        ('PUBLISHED','PUBLICADO'),
+        ('DRAFT','BORRADOR'),
     )
 
     title = models.CharField(max_length=100, unique=True)

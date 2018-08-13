@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tag',
     'about',
     'contact',
+    'djadmin',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,4 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # GOOGLE CAPTCHA CODE
 GOOGLE_SECRET_KEY = "TU_KEY"
+LOGIN_REDIRECT_URL = '/dj-admin/'

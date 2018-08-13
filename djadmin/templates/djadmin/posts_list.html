@@ -1,0 +1,70 @@
+{% extends "base_admin.html" %}
+{% load static %}
+{% block customheader %}
+    <link href="{% static "vendor/datatables/dataTables.bootstrap4.css" %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'dj-admin-posts-view' %}">Entradas</a>
+            </li>
+            <li class="breadcrumb-item active">Listado</li>
+          </ol>
+
+          <!-- Page Content -->
+          <h1>Entradas</h1>
+          <hr>
+         <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Listado de entradas</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Titulo</th>
+                      <th>Slug</th>
+                      <th>Autor</th>
+                      <th>Fecha</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for post in object_list %}
+                  <tr>
+                      <td>{{ post.title }}</td>
+                      <td>{{ post.slug }}</td>
+                      <td>{{ post.author.username }}</td>
+                      <td>{{ post.created }}</td>
+                      <td><span class="badge {% if post.status == 'PUBLISHED' %}badge-success {% else %} badge-danger{% endif %}">{{ post.status }}</span></td>
+                      <td>
+                          <a class="badge badge-primary" href="#"><i class="fas fa-fw fa-edit"></i> Editar</a>
+                          <a class="badge badge-primary" href="#"><i class="fas fa-fw fa-trash-alt"></i> Borrar</a>
+                      </td>
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Para crear una nueva entrada, presione el botón nuevo</div>
+          </div>
+
+
+        </div>
+{%endblock%}
+
+    {% block custombody %}
+
+    <script src="{% static "vendor/datatables/jquery.dataTables.js" %}"></script>
+    <script src="{% static "vendor/datatables/dataTables.bootstrap4.js" %}"></script>
+
+
+    <script src="{% static "dist/js/demo/datatables-demo.js" %}"></script>
+    {% endblock %}

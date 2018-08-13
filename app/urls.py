@@ -19,7 +19,9 @@ from post.views import PostList, PostDetail
 from home.views import HomeView
 from about.views import AboutView
 from contact.views import ContactAdd
+from djadmin.views import Dashboard, PostListView, PostAddView
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home-page"),
@@ -28,5 +30,8 @@ urlpatterns = [
     path('contact/', ContactAdd.as_view(), name="contact-page"),
     path('posts/', PostList.as_view(), name='post-list'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),
-    path('djadmin/login/', LoginView.as_view(), name='login'),
+    path('dj-admin/',login_required(Dashboard.as_view()),name='dj-admin-view'),
+    path('dj-admin/posts/',login_required(PostListView.as_view()),name='dj-admin-posts-view'),
+    path('dj-admin/posts/add/',login_required(PostAddView.as_view()),name='dj-admin-posts-add-view'),
+    path('accounts/login/', LoginView.as_view(), name='login'),
 ]
