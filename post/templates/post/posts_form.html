@@ -13,11 +13,19 @@
               <a href="{% url 'dj-admin-posts-view' %}">Entradas</a>
             </li>
             <li class="breadcrumb-item">Listado</li>
+            {% if modo == "edit" %}
+            <li class="breadcrumb-item active">Editar</li>
+            {% elif modo == "create"%}
             <li class="breadcrumb-item active">Crear</li>
+            {% endif %}
           </ol>
 
           <!-- Page Content -->
-          <h1>Nueva Entrada</h1>
+           {% if modo == "edit" %}
+             <h1>Editar Entrada</h1>
+            {% elif modo == "create"%}
+             <h1>Nueva Entrada</h1>
+            {% endif %}
           <hr>
 
           <form role="form" method="POST">{% csrf_token %}
@@ -45,8 +53,17 @@
                 </select>
               </div>
                 <button type="submit" class="btn btn-default">Guardar</button>
+              <br>
+              <br>
               <script>
+
 			        CKEDITOR.replace( '{{ form.body.html_name }}' );
+			        {% if modo == "edit" %}
+			        CKEDITOR.instances.{{ form.body.id_for_label }}.setData( `{{ form.body.value|safe }}`, function()
+                        {
+                            this.checkDirty();  // true
+                        });
+                    {% endif %}
 		      </script>
 
           </form>

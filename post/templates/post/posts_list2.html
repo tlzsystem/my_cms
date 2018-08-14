@@ -44,8 +44,7 @@
                       <td>{{ post.created }}</td>
                       <td><span class="badge {% if post.status == 'PUBLISHED' %}badge-success {% else %} badge-danger{% endif %}">{{ post.status }}</span></td>
                       <td>
-                          <a class="badge badge-primary" href="#"><i class="fas fa-fw fa-edit"></i> Editar</a>
-                          <a class="badge badge-primary" href="#"><i class="fas fa-fw fa-trash-alt"></i> Borrar</a>
+                          <a class="badge badge-primary" href="{% url 'dj-admin-posts-update-view' post.id %}"><i class="fas fa-fw fa-edit"></i> Editar</a>
                       </td>
                   </tr>
                     {% endfor %}
@@ -53,7 +52,7 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Para crear una nueva entrada, presione el botón nuevo</div>
+            <div class="card-footer small text-muted">Para crear una nueva entrada, presione <a href="{% url 'dj-admin-posts-add-view' %}">aquí</a></div>
           </div>
 
 

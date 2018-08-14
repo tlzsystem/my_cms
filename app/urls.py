@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from post.views import PostList, PostDetail
+from post.views import PostList, PostDetail,PostListView, PostAddView,PostEditView
 from home.views import HomeView
 from about.views import AboutView
 from contact.views import ContactAdd
-from djadmin.views import Dashboard, PostListView, PostAddView
+from sitesetting.views import SiteSettingEdit
+from djadmin.views import Dashboard
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 
@@ -33,5 +34,7 @@ urlpatterns = [
     path('dj-admin/',login_required(Dashboard.as_view()),name='dj-admin-view'),
     path('dj-admin/posts/',login_required(PostListView.as_view()),name='dj-admin-posts-view'),
     path('dj-admin/posts/add/',login_required(PostAddView.as_view()),name='dj-admin-posts-add-view'),
+    path('dj-admin/posts/<int:pk>/', login_required(PostEditView.as_view()),name='dj-admin-posts-update-view'),
+    path('dj-admin/settings/',login_required(SiteSettingEdit.as_view()),name='dj-admin-sitesetting-view'),
     path('accounts/login/', LoginView.as_view(), name='login'),
 ]
