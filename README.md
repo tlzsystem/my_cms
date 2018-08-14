@@ -1,7 +1,7 @@
 # my_cms
 CMS básico escrito en Django para gestionar mi sitio personal.
 
-Version beta 0.1
+Version beta 0.1.2
 
 Funciona con **Python 3**
 
