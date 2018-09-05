@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from post.views import PostList, PostDetail,PostListView, PostAddView,PostEditView,PostListByAuthor
+from post.views import PostList, PostDetail,PostListView, PostAddView, PostEditView, PostListByAuthor, PostListByYear, PostListByMonth, PostListByDay
 from home.views import HomeView
 from about.views import AboutView
 from contact.views import ContactAdd
@@ -32,6 +32,9 @@ urlpatterns = [
     path('posts/', PostList.as_view(), name='post-list'),
     path('posts/author/<username>/', PostListByAuthor.as_view(), name='post-author'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),
+    path('posts/<int:year>/<int:month>/<int:day>/', PostListByDay.as_view(), name='post-detail'),
+    path('posts/<int:year>/<int:month>/', PostListByMonth.as_view(), name='post-detail'),
+    path('posts/<int:year>/', PostListByYear.as_view(), name='post-detail'),
     path('dj-admin/',login_required(Dashboard.as_view()),name='dj-admin-view'),
     path('dj-admin/posts/',login_required(PostListView.as_view()),name='dj-admin-posts-view'),
     path('dj-admin/posts/add/',login_required(PostAddView.as_view()),name='dj-admin-posts-add-view'),

@@ -21,6 +21,21 @@ class PostListByAuthor(ListView):
     def get_queryset(self, **kwargs):
         return Post.objects.filter(author__username=self.kwargs['username'])
 
+class PostListByYear(ListView):
+    paginate_by = 10
+    def get_queryset(self, **kwargs):
+        return Post.objects.filter(publish__year=self.kwargs['year'])
+
+class PostListByMonth(ListView):
+    paginate_by = 10
+    def get_queryset(self, **kwargs):
+        return Post.objects.filter(publish__year=self.kwargs['year'], publish__month=self.kwargs['month'])
+
+class PostListByDay(ListView):
+    paginate_by = 10
+    template_name = 'post/posts_by_author.html'
+    def get_queryset(self, **kwargs):
+        return Post.objects.filter(publish__year=self.kwargs['year'], publish__month=self.kwargs['month'], publish__day=self.kwargs['day'])
 class PostAddView(CreateView):
     model = Post
     fields = ['title','subtitle','body','status']
