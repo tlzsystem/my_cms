@@ -1,7 +1,7 @@
 # my_cms
 CMS básico escrito en Django para gestionar mi sitio personal.
 
-Version beta 0.1
+Version beta 0.1.2
 
 Funciona con **Python 3**
 
@@ -52,7 +52,7 @@ Run
     
 Configure the site on the admin's site
 
-    localhost:8000/admin
+    localhost:8000/dj-admin
     
  
  ### Como usar
@@ -89,6 +89,8 @@ Configure the site on the admin's site
     python manage.py runserver
     
   Entra al sitio del administrador para configurar los parametros del sitio y crear posts.
+  
+    localhost:8000/dj-admin
     
   
   
