@@ -13,7 +13,14 @@ class PostDetail(DetailView):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'post/posts_list2.html';
+    template_name = 'post/posts_list2.html'
+
+class PostListByAuthor(ListView):
+    paginate_by = 10
+    template_name = 'post/posts_by_author.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.username)
 
 class PostAddView(CreateView):
     model = Post

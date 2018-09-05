@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contact/', ContactAdd.as_view(), name="contact-page"),
     path('posts/', PostList.as_view(), name='post-list'),
+    path('posts/author/<username>/', PostDetail.as_view(), name='post-detail'),
     path('posts/<int:year>/<int:month>/<int:day>/<slug:slug>/', PostDetail.as_view(), name='post-detail'),
     path('dj-admin/',login_required(Dashboard.as_view()),name='dj-admin-view'),
     path('dj-admin/posts/',login_required(PostListView.as_view()),name='dj-admin-posts-view'),
