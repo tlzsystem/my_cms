@@ -18,9 +18,8 @@ class PostListView(ListView):
 class PostListByAuthor(ListView):
     paginate_by = 10
     template_name = 'post/posts_by_author.html'
-
-    def get_queryset(self):
-        return Post.objects.filter(author=self.request.username)
+    def get_queryset(self, **kwargs):
+        return Post.objects.filter(author__username=self.kwargs['username'])
 
 class PostAddView(CreateView):
     model = Post

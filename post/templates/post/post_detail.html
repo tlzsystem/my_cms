@@ -16,7 +16,7 @@
               <h1>{{ object.title}}</h1>
               <span class="subheading">{{ object.subtitle}}</span>
                 <p class="post-meta">Escrito por
-                  <a href="#">{{object.author.username}} </a>
+                  <a href="{% url 'post-author' object.author.username%}">{{object.author.username}} </a>
                   el {{object.publish}}</p>
             </div>
           </div>
